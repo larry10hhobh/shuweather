@@ -2,6 +2,7 @@ package com.shuweather.android;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.shuweather.android.gson.Forecast;
 import com.shuweather.android.gson.Weather;
+import com.shuweather.android.service.AutoUpdateService;
 import com.shuweather.android.util.HttpUtil;
 import com.shuweather.android.util.Utility;
 
@@ -227,5 +229,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
